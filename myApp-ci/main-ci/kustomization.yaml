@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- 01-namespace/cicd-namespace.yaml
+- 02-rolebindings/argocd-admin.yaml
+- 02-rolebindings/pipeline-service-account.yaml
+- 02-rolebindings/pipeline-service-role.yaml
+- 02-rolebindings/pipeline-service-rolebinding.yaml
+- 03-image-streams/containerImageStream-RuntimeImage.yaml
+- 04-resources/imageResource-Intermediate.yaml
+- 04-resources/imageResource-Runtime.yaml
+- 05-tasks/build-image.yaml
+- 05-tasks/create-runtimeImage.yaml
+- 05-tasks/update-and-commit-kustomization-file.yaml
+- 05-tasks/acs-image-build-check.yaml
+- 05-tasks/push-image-to-quay.yaml
+- 05-tasks/acs-deployment-check.yaml
+- 05-tasks/configure-deployment-assets.yaml
+- 05-tasks/set-commit-status-github.yaml
+- 05-tasks/dl-quay-webhook-trigger.yaml
+- 06-pipeline/ci-pipeline.yaml
+- 08-triggers/event-listener.yaml
+- 08-triggers/event-listener-route.yaml
+- 08-triggers/trigger-binding.yaml
+- 08-triggers/trigger-template.yaml
